@@ -1,4 +1,6 @@
+# install untuk flasknya
 from flask import Flask, request, render_template,jsonify
+# install kebutuhan untuk dbnya
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -6,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bengkelku.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# orm
+# Definisikan model Bengkel ormnya
 class Bengkel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nama = db.Column(db.String(100), nullable=False)
