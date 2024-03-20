@@ -1,6 +1,4 @@
-# install untuk flasknya
 from flask import Flask, request, render_template,jsonify
-# install kebutuhan untuk dbnya
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -8,7 +6,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bengkelku.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Definisikan model Bengkel ormnya
 class Bengkel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nama = db.Column(db.String(100), nullable=False)
@@ -18,7 +15,6 @@ class Bengkel(db.Model):
     def __repr__(self):
         return f'<Bengkel {self.nama}>'
 
-# Route untuk menambahkan data bengkel
 @app.route('/add_bengkel', methods=['GET', 'POST'])
 def add_bengkel():
     if request.method == 'POST':
@@ -31,7 +27,6 @@ def add_bengkel():
         return 'Bengkel added successfully'
     return render_template('add_bengkel.html')
 
-# Route untuk melihat semua data bengkel
 @app.route('/view_bengkel', methods=['GET'])
 def view_bengkel():
     bengkels = Bengkel.query.all()
