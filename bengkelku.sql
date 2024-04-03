@@ -1,4 +1,4 @@
-create database bengkelku;
+create database bengkel;
 
 CREATE TABLE bengkel ( 
     id INTEGER NOT NULL, 
